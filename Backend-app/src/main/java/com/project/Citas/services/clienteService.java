@@ -28,14 +28,18 @@ import com.project.Citas.repositories.servicioRepository;
 @Service
 public class clienteService {
     @Autowired
+    @Mock
     private citasRepository citasRepositories;
 
     @Autowired
+    @Mock
     private horarioRepository horarioRepository;
 
     @Autowired
+    @Mock
     private servicioRepository servicioRepository;
     @Autowired
+    @Mock
     private asignacionServiciosRepository asignacionServiciosRepository;
 
 
