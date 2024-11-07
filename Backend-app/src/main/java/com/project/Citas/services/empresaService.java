@@ -17,8 +17,10 @@ import com.project.Citas.repositories.diasAtencionRepository;
 @Service
 public class empresaService {
     @Autowired
+    @Mock
     private EmpresaRepository empresaRepositorie;
     @Autowired
+    @Mock
     private diasAtencionRepository diasAtencionRepositorie;
     public Optional<EmpresaModel> getEmpresaById(Long id) {
         return empresaRepositorie.findById(id);

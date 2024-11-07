@@ -31,19 +31,25 @@ import jakarta.transaction.Transactional;
 @Service
 public class citasService {
     @Autowired
+    @Mock
     private citasRepository citasRepositories;
 
     @Autowired
+    @Mock
     private servidorRepository servidorRepositorie;
 
     @Autowired
+    @Mock
     private servicioRepository servicioRepositorie;
 
     @Autowired
+    @Mock
     private estadoCitaRepository estadoCitaRepositorie;
     @Autowired
+    @Mock
     private asignacionServiciosRepository asignacionServiciosRepositorie;
     @Autowired
+    @Mock
     private horarioRepository horarioRepository;
 
     public JsonResponse saveCitas(citasModel newCita) {

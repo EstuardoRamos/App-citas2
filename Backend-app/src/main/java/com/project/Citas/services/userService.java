@@ -24,20 +24,26 @@ import java.util.Random;
 @Service
 public class userService {
     @Autowired
+    @Mock
     userRepository userRepositorie;
 
     @Autowired
+    @Mock
     private JavaMailSender mailSender;
     @Autowired
+    @Mock
     private JwtService jwtService;
 
     @Autowired
+    @Mock
     private verificacionA2fCache cache = new verificacionA2fCache();
 
     @Autowired
+    @Mock
     tipoUsuarioRepository tipoUsuarioRepository;
 
     @Autowired
+    @Mock
     private BCryptPasswordEncoder passwordEncoder;
 
     public JsonResponse updateUser(userModel nUserModel){

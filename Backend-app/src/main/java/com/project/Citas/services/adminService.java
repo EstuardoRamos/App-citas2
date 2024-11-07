@@ -36,20 +36,28 @@ import com.project.Citas.repositories.userRepository;
 @Service
 public class adminService {
     @Autowired
+    @Mock
     private EmpresaRepository empresaRepositorie;
     @Autowired
+    @Mock
     private rolRepository rolRepositorie;
     @Autowired
+    @Mock
     private asignacionPermisosRepository asignacionPermisosRepositories;
     @Autowired
+    @Mock
     private asignacionRolRepository asignacionRolRepositorie;
     @Autowired
+    @Mock
     private userRepository userRepositorie;
     @Autowired
+    @Mock
     private permisosRepository permisosRepositorie;
     @Autowired
+    @Mock
     private citasRepository citasRepository;
     @Autowired
+    @Mock
     private estadoCitaRepository estadoCitaRepository;
 
 
