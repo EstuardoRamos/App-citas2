@@ -1,0 +1,12 @@
+<!-- info-empresa.component.html -->
+<div class="company-info-container">
+    <mat-card class="company-card">
+      <img mat-card-image [src]="empresa.urlImagen" alt="Logo de la Empresa" class="company-logo">
+      <mat-card-content>
+        <h2>{{ empresa.nombre }}</h2>
+        <p><strong>Dirección:</strong> {{ empresa.direccion }}</p>
+        <p><strong>Horario de Atención:</strong> {{ empresa.horaInicio }} - {{ empresa.horaCierre }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

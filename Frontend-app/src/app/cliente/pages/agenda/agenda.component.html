@@ -1,0 +1,46 @@
+<div class="container ">
+  <!-- Contenedor principal con MatCard -->
+  <mat-card>
+    <!-- Seleccionar Tipo de Servicio -->
+    <h3>Selecciona tu Cita</h3>
+
+    <!-- Selector de Tipo de Servicio -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Tipo de Servicio</mat-label>
+      <mat-select [(value)]="selectedService" (selectionChange)="onServiceChange()">
+        <mat-option *ngFor="let service of services" [value]="service">{{ service.nombre }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Selector de Servidor -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Servidor</mat-label>
+      <mat-select [(value)]="selectedServer" [disabled]="!selectedService" (selectionChange)="onServerChange()">
+        <mat-option *ngFor="let server of servers" [value]="server">{{ server.nombre }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Selector de Fecha -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Fecha</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" [disabled]="!selectedServer" (dateChange)="onDateChange()" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- Horarios Disponibles -->
+    <div *ngIf="selectedDate" class="horarios-container">
+      <h3>Horarios Disponibles para {{ selectedDate | date }}</h3>
+      <div *ngFor="let horario of horariosDisponibles" class="horario" >
+        <button
+          mat-raised-button
+          color="primary"
+          *ngIf="horario"
+          (click)="seleccionarHorario(horario)"
+        >
+          {{ horario.horaInicio }} a {{horario.horaFin}}
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</div>

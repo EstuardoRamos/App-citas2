@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Actualizar Estado de la Cita</h2>
+
+<mat-dialog-content>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Seleccione el nuevo estado</mat-label>
+    <mat-select [(ngModel)]="selectedEstado">
+      <mat-option *ngFor="let estado of estadosCita" [value]="estado.id">{{ estado.nombre }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button color="primary" (click)="onConfirm()">Aceptar</button>
+</mat-dialog-actions>

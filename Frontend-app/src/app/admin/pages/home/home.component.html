@@ -1,0 +1,79 @@
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav mode="push">
+      <!-- Logo y Nombre de Empresa en la parte superior del Sidenav -->
+      <div class="company-header">
+        <img [src]="empresa1.urlImagen" alt="Logo de la Empresa" class="company-logo">
+        <span class="company-name">{{ empresa1.nombre }}</span>
+      </div>
+  
+      <mat-toolbar>
+        <span class="tool-menu-span">Menu</span>
+        <button mat-button class="nav-button" (click)="sidenav.toggle()">
+          <mat-icon style="margin: 4px; font-size: 26px;">arrow_back</mat-icon>
+        </button>
+      </mat-toolbar>
+  
+      <mat-nav-list>
+        <a routerLink="./" mat-list-item (click)="sidenav.toggle()">
+          <mat-icon mat-list-icon>home</mat-icon>
+          <span class="nav-text">Home</span>
+        </a>
+        <a *ngIf="empresa" routerLink="./info-empresa" mat-list-item (click)="sidenav.toggle()">
+          <mat-icon mat-list-icon>business</mat-icon>
+          <span class="nav-text">Mi empresa</span>
+        </a>
+        <a *ngIf="servidores" routerLink="./gestion-servidores" mat-list-item (click)="sidenav.toggle()">
+          <mat-icon mat-list-icon>storage</mat-icon>
+          <span class="nav-text">Servidores</span>
+        </a>
+        <a *ngIf="rolesPermisos" routerLink="./gestion-roles" mat-list-item (click)="sidenav.toggle()">
+          <mat-icon mat-list-icon>security</mat-icon>
+          <span class="nav-text">Roles y permisos</span>
+        </a>
+        <a *ngIf="usuarios" routerLink="./gestion-usuarios" mat-list-item (click)="sidenav.toggle()">
+          <mat-icon mat-list-icon>group</mat-icon>
+          <span class="nav-text">Gestión de usuarios</span>
+        </a>
+        <a *ngIf="citas" routerLink="./citas-admin" mat-list-item (click)="sidenav.toggle()">
+          <mat-icon mat-list-icon>event</mat-icon>
+          <span class="nav-text">Citas</span>
+        </a>
+        <a *ngIf="citasServidor" routerLink="./citas-servidor" mat-list-item (click)="sidenav.toggle()">
+          <mat-icon mat-list-icon>event_available</mat-icon>
+          <span class="nav-text">Citas servidor</span>
+        </a>
+        <a *ngIf="servicios" routerLink="./servicios" mat-list-item (click)="sidenav.toggle()">
+          <mat-icon mat-list-icon>build</mat-icon>
+          <span class="nav-text">Servicios</span>
+        </a>
+        <a *ngIf="reportes" routerLink="./reportes" mat-list-item (click)="sidenav.toggle()">
+          <mat-icon mat-list-icon>assessment</mat-icon>
+          <span class="nav-text">Reportes</span>
+        </a>
+        <a routerLink="./mi-perfil" mat-list-item (click)="sidenav.toggle()">
+          <mat-icon mat-list-icon>person</mat-icon>
+          <span class="nav-text">Mi perfil</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <!-- Barra de herramientas principal con el nombre y logo de la empresa -->
+    <mat-toolbar>
+      <button mat-button class="nav-button" (click)="sidenav.toggle()">
+        <mat-icon style="margin: 4px; font-size: 26px;">menu</mat-icon>
+      </button>
+      <img [src]="empresa1.urlImagen" alt="Logo de la Empresa" class="toolbar-logo">
+      <span class="toolbar-company-name">{{ empresa1.nombre }}</span>
+      <span class="spacer"></span>
+      <mat-icon>person</mat-icon>
+      <span>Nombre | Administrador</span>
+      <button mat-button class="nav-button">
+        <mat-icon style="margin: 4px; font-size: 26px;">logout</mat-icon>
+      </button>
+    </mat-toolbar>
+  
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-container>
+  

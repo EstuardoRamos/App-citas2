@@ -1,0 +1,60 @@
+<div class="perfil-container">
+    <h2>Mi Perfil</h2>
+  
+    <!-- Modo Vista de Perfil -->
+    <div *ngIf="!editMode">
+      <p><strong>Nombre:</strong> {{ user.nombre }}</p>
+      <p><strong>Tipo de Usuario:</strong> {{ user.tipoUsuario.nombre }}</p>
+      <p><strong>Correo Electrónico:</strong> {{ user.correoElectronico }}</p>
+      <p><strong>Teléfono:</strong> {{ user.telefono }}</p>
+      <p><strong>NIT:</strong> {{ user.nit }}</p>
+      <p><strong>CUI:</strong> {{ user.cui }}</p>
+      <p><strong>Fecha de Nacimiento:</strong> {{ user.fechaNacimiento | date }}</p>
+      <p><strong>Autenticación de Dos Factores:</strong> {{ user.a2f ? 'Activada' : 'Desactivada' }}</p>
+  
+      <button mat-raised-button color="primary" (click)="editMode = true">Editar Perfil</button>
+    </div>
+  
+    <!-- Modo Editar Perfil -->
+    <form *ngIf="editMode" (ngSubmit)="guardarCambios()">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="user.nombre" name="nombre" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Correo Electrónico</mat-label>
+        <input matInput type="email" [(ngModel)]="user.correoElectronico" name="correoElectronico" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Teléfono</mat-label>
+        <input matInput [(ngModel)]="user.telefono" name="telefono" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>NIT</mat-label>
+        <input matInput [(ngModel)]="user.nit" name="nit" />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>CUI</mat-label>
+        <input matInput [(ngModel)]="user.cui" name="cui" />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="user.fechaNacimiento" name="fechaNacimiento" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
+      <mat-checkbox [(ngModel)]="user.a2f" name="a2f">Autenticación de Dos Factores</mat-checkbox>
+  
+      <div class="actions">
+        <button mat-button (click)="cancelarEdicion()">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit">Guardar Cambios</button>
+      </div>
+    </form>
+  </div>
+  

@@ -1,0 +1,53 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push">
+      <mat-toolbar>
+          <span class="tool-menu-span">Menu</span>
+          <button mat-button class="nav-button" (click)="sidenav.toggle()">
+              <mat-icon style="margin: 4px; font-size: 26px;">arrow_back</mat-icon>
+          </button>
+      </mat-toolbar>
+
+      <mat-nav-list>
+          <a routerLink="./" mat-list-item (click)="sidenav.toggle()">
+              <mat-icon mat-list-icon>home</mat-icon>
+              <span class="nav-text">Home</span>
+          </a>
+          <a routerLink="./citas" mat-list-item (click)="sidenav.toggle()">
+              <mat-icon mat-list-icon>calendar_today</mat-icon>
+              <span class="nav-text">Mis Citas</span>
+          </a>
+          <a routerLink="./agenda" mat-list-item (click)="sidenav.toggle()">
+              <mat-icon mat-list-icon>add</mat-icon>
+              <span class="nav-text">Agregar cita</span>
+          </a>
+          <a routerLink="./refuerzo" mat-list-item (click)="sidenav.toggle()">
+              <mat-icon mat-list-icon>star_border</mat-icon>
+              <span class="nav-text">Comprobantes</span>
+          </a>
+
+          <a routerLink="./logros" mat-list-item (click)="sidenav.toggle()">
+              <mat-icon mat-list-icon>flare</mat-icon>
+              <span class="nav-text">Mis Facturas</span>
+          </a>
+          <a routerLink="./perfil" mat-list-item (click)="sidenav.toggle()">
+              <mat-icon mat-list-icon>face</mat-icon>
+              <span class="nav-text">Mi perfil</span>
+          </a>
+      </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-toolbar>
+      <button mat-button class="nav-button" (click)="sidenav.toggle()">
+          <mat-icon style="margin: 4px; font-size: 26px;">menu</mat-icon>
+      </button>
+      <span class="spacer"></span>
+      <mat-icon>person</mat-icon>
+      <span>| Cliente</span>
+      <button mat-button class="nav-button" >
+          <mat-icon style="margin: 4px; font-size: 26px;">logout</mat-icon>
+      </button>
+  </mat-toolbar>
+  <div class="container">
+      <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

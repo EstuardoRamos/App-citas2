@@ -1,0 +1,92 @@
+<div *ngIf="!verificacion" class="register-container">
+  <mat-card class="register-card">
+    <h1 class="register-title">Registro de Usuario</h1>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+      <!-- Nombre -->
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre" formControlName="nombre">
+        <mat-error *ngIf="registerForm.controls['nombre'].invalid && registerForm.controls['nombre'].touched">
+          Nombre es requerido
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Correo Electrónico -->
+      <mat-form-field appearance="fill">
+        <mat-label>Correo Electrónico</mat-label>
+        <input matInput placeholder="Correo Electrónico" formControlName="correoElectronico">
+        <mat-error *ngIf="registerForm.controls['correoElectronico'].invalid && registerForm.controls['correoElectronico'].touched">
+          Correo electrónico es requerido
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Contraseña -->
+      <mat-form-field appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" placeholder="Contraseña" formControlName="contrasenia">
+        <mat-error *ngIf="registerForm.controls['contrasenia'].invalid && registerForm.controls['contrasenia'].touched">
+          Contraseña es requerida
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Confirmar Contraseña -->
+      <mat-form-field appearance="fill">
+        <mat-label>Confirmar Contraseña</mat-label>
+        <input matInput type="password" placeholder="Confirmar Contraseña" formControlName="confirmarContrasenia">
+        <mat-error *ngIf="registerForm.hasError('contraseniasNoCoinciden') && registerForm.touched">
+          Las contraseñas no coinciden
+        </mat-error>
+      </mat-form-field>
+
+      <div class="grid-container">
+        <!-- NIT -->
+        <mat-form-field appearance="fill">
+          <mat-label>NIT</mat-label>
+          <input matInput placeholder="NIT" formControlName="nit">
+        </mat-form-field>
+
+        <!-- CUI -->
+        <mat-form-field appearance="fill">
+          <mat-label>CUI</mat-label>
+          <input matInput placeholder="CUI" formControlName="cui">
+        </mat-form-field>
+      </div>
+
+      <div class="grid-container">
+        <!-- Teléfono -->
+        <mat-form-field appearance="fill">
+          <mat-label>Teléfono</mat-label>
+          <input matInput placeholder="Teléfono" formControlName="telefono">
+        </mat-form-field>
+
+        <!-- Fecha de Nacimiento -->
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha de nacimiento:</mat-label>
+          <input matInput type="date" formControlName="fechaNacimiento">
+        </mat-form-field>
+      </div>
+      <span  *ngIf="registerForm.invalid!">Puede que las contraseñas no coincidan o falte un campo</span>
+
+      <!-- Botón Registrar -->
+      <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">
+        Registrar
+      </button>
+    </form>
+  </mat-card>
+</div>
+
+<div *ngIf="verificacion" class="register-container">
+<h1 class="register-title">Verificacion</h1>
+
+    <form [formGroup]="registerForm" (ngSubmit)="verificarCodigo()" class="register-form">
+      <!-- Nombre -->
+      <mat-form-field appearance="fill">
+        <mat-label>Codigo de verificacion</mat-label>
+        <input matInput [(ngModel)]="codigo" placeholder="codigo" formControlName="codigo">
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" >
+        Registrar
+      </button>
+    </form>
+  </div>

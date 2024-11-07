@@ -1,0 +1,28 @@
+.calendar-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #2f2d2d;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  mwl-calendar-week-view {
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: rgb(32, 31, 31);
+  }
+  
+  .calendar-event {
+    padding: 10px;
+    border-radius: 4px;
+    color: rgb(75, 73, 73);
+  }
+  
+  

@@ -1,0 +1,73 @@
+/* cliente.component.css */
+
+.sidenav-container {
+  height: 100vh;
+}
+
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-sidenav {
+  width: 250px;
+}
+
+.company-header {
+  text-align: center;
+  padding: 16px;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.company-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+}
+
+.company-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.toolbar-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.toolbar-company-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.content {
+  padding: 20px;
+  margin-top: 64px; /* Altura de la toolbar */
+}
+
+.mat-nav-list .mat-list-item {
+  padding: 1rem 2rem;
+}
+
+.mat-list-icon {
+  margin-right: 1rem;
+  font-size: 24px;
+}
+
+.nav-text {
+  font-size: 16px;
+}

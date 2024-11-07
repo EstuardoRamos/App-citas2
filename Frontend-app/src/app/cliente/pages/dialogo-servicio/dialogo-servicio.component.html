@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Selecciona el Servicio</h2>
+
+<mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Selecciona el servicio</mat-label>
+    <mat-select [(ngModel)]="servicioSeleccionado">
+      <mat-option *ngFor="let servicio of servicios" [value]="servicio">
+        {{ servicio.nombre }} (Duración: {{ servicio.duracion }})
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cerrarDialogo()">Cancelar</button>
+  <button mat-button color="primary" (click)="cerrarDialogo()">Aceptar</button>
+</mat-dialog-actions>

@@ -1,0 +1,47 @@
+<div class="calendar-container">
+  <header class="calendar-header">
+    <h2>Appointment Scheduler</h2>
+    <div class="actions">
+      <button mat-raised-button color="primary">Max 1 Hr</button>
+      <button mat-raised-button color="accent">After Lunch</button>
+      <button mat-raised-button>Random Update</button>
+      <button mat-raised-button color="warn">Initial Animation</button>
+    </div>
+  </header>
+
+  <div class="calendar-content">
+    <!-- Sidebar con empleados -->
+    <aside class="staff-list">
+      <div *ngFor="let staff of staffList" class="staff-item">
+        <h4>{{ staff.name }}</h4>
+        <span>{{ staff.events.length }} event(s)</span>
+      </div>
+    </aside>
+
+    <!-- Calendario diario con grid más preciso -->
+    <div class="day-calendar">
+      <div class="time-header">
+        <div class="time-slot" *ngFor="let time of timeSlots">{{ time }}</div>
+      </div>
+
+      <div class="events-grid">
+        <!-- Espacios clicables para agendar citas -->
+        <div
+          class="time-cell"
+          *ngFor="let slot of timeSlots"
+          (click)="scheduleAppointment(slot)"
+        ></div>
+
+        <!-- Eventos programados con ajuste preciso de columnas -->
+        <div
+          *ngFor="let event of events"
+          class="event"
+          [ngClass]="event.color"
+          [style.gridColumn]="'time-' + event.startHour + ' / time-' + event.endHour"
+        >
+          {{ event.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

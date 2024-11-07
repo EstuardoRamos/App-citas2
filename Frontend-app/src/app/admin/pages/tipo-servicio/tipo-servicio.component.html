@@ -1,0 +1,83 @@
+<div class="gestion-servicios-container">
+  <h2>Gestión de Tipos de Servicios</h2>
+
+  <div class="tabla-formulario-contenedor">
+    <!-- Tabla de Servicios Existentes -->
+    <div class="tabla-container">
+      <table class="servicios-table">
+        <thead>
+          <tr>
+            <th>Tipo de Servicio</th>
+            <th>Duración</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let servicio of servicios">
+            <td>{{ servicio.nombre }}</td>
+            <td>{{ convertirMinutosADuracion(servicio.duracion!) }}</td>
+            <td>{{ servicio.precio | currency }}</td>
+            <td>
+              <button (click)="editarServicio(servicio)">Editar</button>
+              <button (click)="eliminarServicio(servicio)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Formulario de Creación/Edición de Servicios -->
+    <form (ngSubmit)="guardarServicio()" class="servicio-form" #form="ngForm">
+      <div class="form-group">
+        <label for="nombre">Nombre del Servicio</label>
+        <input 
+          id="nombre" 
+          [(ngModel)]="servicio.nombre" 
+          name="nombre" 
+          required 
+          #nombre="ngModel" 
+        />
+        <div *ngIf="nombre.invalid && nombre.touched" class="error">
+          El nombre es obligatorio.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="duracion">Duración del Servicio (HH:MM)</label>
+        <input 
+          type="time" 
+          id="duracion" 
+          [(ngModel)]="duracionTemporal" 
+          name="duracion" 
+          required 
+          #duracion="ngModel"
+        />
+        <div *ngIf="duracion.invalid && duracion.touched" class="error">
+          La duración es obligatoria.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="precio">Precio del Servicio</label>
+        <input 
+          type="number" 
+          id="precio" 
+          [(ngModel)]="servicio.precio" 
+          name="precio" 
+          step="0.01" 
+          min="0" 
+          required 
+          #precio="ngModel"
+        />
+        <div *ngIf="precio.invalid && precio.touched" class="error">
+          El precio es obligatorio.
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="form.invalid">
+        {{ servicio.id ? 'Guardar Cambios' : 'Agregar Servicio' }}
+      </button>
+    </form>
+  </div>
+</div>

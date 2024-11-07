@@ -1,0 +1,76 @@
+<div class="container">
+  <h2>{{isEditMode ? 'Editar' : 'Configurar'}} Empresa</h2>
+  <form (ngSubmit)="onSubmit()">
+    <!-- Nombre de la Empresa -->
+    <div class="form-group">
+      <label for="nombreEmpresa">Nombre de la Empresa*</label>
+      <input
+        type="text"
+        id="nombreEmpresa"
+        name="nombreEmpresa"
+        placeholder="Ingresa el nombre de la empresa"
+        [(ngModel)]="empresa.nombre"
+        required
+      />
+    </div>
+    
+    <!-- Dirección de la Empresa -->
+    <div class="form-group">
+      <label for="direccion">Direccion*</label>
+      <input
+        type="text"
+        id="direccion"
+        name="direccion"
+        placeholder="Ingresa la dirección de la empresa"
+        [(ngModel)]="empresa.direccion"
+        required
+      />
+    </div>
+
+    <!-- Logo de la Empresa -->
+    <div class="form-group">
+      <label for="logoEmpresa">Logo de la Empresa*</label>
+      <input
+        type="file"
+        id="logoEmpresa"
+        name="logoEmpresa"
+        (change)="onFileSelected($event)"
+        [required]="!empresa.urlImagen" 
+      />
+      <img *ngIf="empresa.urlImagen" [src]="empresa.urlImagen" alt="Logo actual" class="logo-preview"/>
+    </div>
+
+   
+
+    <!-- Horario de Atención -->
+    <h3>Horario de Atención</h3>
+    <div class="form-group">
+      <label for="horarioApertura">Horario de Apertura*</label>
+      <input
+        type="time"
+        id="horarioApertura"
+        name="horarioApertura"
+        [(ngModel)]="empresa.horaInicio"
+        required
+        (change)="convertirHoraFormato24('horaInicio')"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="horarioCierre">Horario de Cierre*</label>
+      <input
+        type="time"
+        id="horarioCierre"
+        name="horarioCierre"
+        [(ngModel)]="empresa.horaCierre"
+        required
+        (change)="convertirHoraFormato24('horaCierre')"
+      />
+    </div>
+
+    <!-- Botón de guardar -->
+    <div class="form-group">
+      <button type="submit">{{isEditMode ? 'Guardar Cambios' : 'Guardar Configuración'}}</button>
+    </div>
+  </form>
+</div>

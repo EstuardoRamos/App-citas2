@@ -1,0 +1,115 @@
+/* Contenedor general */
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  background-color: #323131; /* Fondo claro */
+}
+
+/* Header */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1976d2; /* Azul del encabezado */
+  color: white;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+}
+
+.actions button {
+  margin-left: 10px;
+}
+
+/* Contenido principal */
+.calendar-content {
+  display: flex;
+  flex: 1;
+}
+
+/* Sidebar */
+.staff-list {
+  width: 150px;
+  background-color: #ffffff; /* Fondo blanco */
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.staff-item {
+  margin-bottom: 15px;
+}
+
+.staff-item h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333; /* Texto oscuro */
+}
+
+/* Calendario diario */
+.day-calendar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  background-color: #fafafa; /* Fondo claro para el calendario */
+}
+
+.time-header {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr); /* 24 columnas para cada hora */
+  background-color: #e0e0e0; /* Fondo gris claro */
+  border-bottom: 1px solid #ccc;
+}
+
+.time-slot {
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  color: #555; /* Texto más oscuro */
+  border-right: 1px solid #ddd;
+}
+
+/* Grid para las celdas de eventos */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr); /* Cada celda representa una hora */
+  grid-auto-rows: 50px; /* Altura fija */
+  background-color: #ffffff; /* Fondo blanco */
+  border-top: 1px solid #ccc;
+}
+
+/* Espacios clicables */
+.time-cell {
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  background-color: #f9f9f9; /* Fondo gris claro */
+}
+
+.time-cell:hover {
+  background-color: #e0f7fa; /* Azul claro al pasar el mouse */
+}
+
+/* Estilos para los eventos */
+.event {
+  padding: 10px;
+  margin: 2px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.orange {
+  background-color: #ff9800; /* Naranja vivo */
+}
+
+.blue {
+  background-color: #2196f3; /* Azul brillante */
+}
+
+.green {
+  background-color: #4caf50; /* Verde vivo */
+}

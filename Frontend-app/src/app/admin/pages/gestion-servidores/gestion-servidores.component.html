@@ -1,0 +1,70 @@
+<div class="gestion-servidores-container">
+  <h2>Gestión de Servidores</h2>
+
+  <div class="tabla-formulario-contenedor">
+    <!-- Tabla de Servidores Existentes -->
+    <div class="tabla-container">
+      <table class="servidores-table">
+        <thead>
+          <tr>
+            <th>Nombre del Servidor</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let servidor of servidores">
+            <td>{{ servidor.nombre }}</td>
+            <td>{{ servidor.descripcion }}</td>
+            <td>
+              <button (click)="editarServidor(servidor)">Editar</button>
+              <button (click)="eliminarServidor(servidor)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Formulario de Creación/Edición de Servidores -->
+    <form (ngSubmit)="guardarServidor()" class="servidor-form" #form="ngForm">
+      <div class="form-group">
+        <label for="nombre">Nombre del Servidor</label>
+        <input id="nombre" [(ngModel)]="servidor.nombre" name="nombre" required #nombre="ngModel" />
+        <div *ngIf="nombre.invalid && nombre.touched" class="error">Este campo es obligatorio.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="descripcion">Descripción del Servidor</label>
+        <textarea id="descripcion" [(ngModel)]="servidor.descripcion" name="descripcion"></textarea>
+      </div>
+
+      <div class="servicios-section">
+        <label>Servicios</label>
+        <div *ngFor="let servicio of servicios">
+          <input type="checkbox" [(ngModel)]="servicio.seleccionado" [name]="'servicio_' + servicio.id" /> 
+          {{ servicio.nombre }}
+        </div>
+      </div>
+
+      <div class="horarios-section">
+        <h3>Días y Horarios de Trabajo</h3>
+        <div *ngFor="let horario of servidor.horarios" class="dia-horario">
+          <input type="checkbox" [(ngModel)]="horario.seleccionado" [name]="horario.dia + '_selected'" />
+          <label>{{ horario.dia | translate }}</label>
+
+          <div class="horario-inputs" *ngIf="horario.seleccionado">
+            <label>Inicio</label>
+            <input type="time" [(ngModel)]="horario.horaInicio" [name]="horario.dia + '_horaInicio'" />
+
+            <label>Fin</label>
+            <input type="time" [(ngModel)]="horario.horaFin" [name]="horario.dia + '_horaFin'" />
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="form.invalid">
+        {{ isEdit ? 'Guardar Cambios' : 'Agregar Servidor' }}
+      </button>
+    </form>
+  </div>
+</div>

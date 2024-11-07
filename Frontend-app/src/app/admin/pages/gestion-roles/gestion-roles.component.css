@@ -1,0 +1,140 @@
+.gestion-roles-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #2c2f33;
+  border-radius: 10px;
+  max-width: 1200px;
+  color: white;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tabla-formulario-contenedor {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* Contenedor para la tabla */
+.tabla-container {
+  flex: 1;
+}
+
+/* Estilo para la tabla */
+.roles-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #2c2f33;;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.roles-table th, 
+.roles-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.roles-table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Estilo para el formulario */
+.role-form {
+  flex: 1;
+  background-color: #2c2f33;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+}
+
+.permisos-section {
+  margin-top: 20px;
+}
+
+.permisos-section label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.permisos-section div {
+  margin-bottom: 10px;
+}
+
+/* Estilo para los mensajes de error */
+.error {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 5px;
+}
+
+/* Botón */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:disabled {
+  background-color: #9E9E9E;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+/* MEDIA QUERIES para pantallas pequeñas */
+@media (max-width: 768px) {
+  .tabla-formulario-contenedor {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gestion-roles-container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .form-group input {
+    font-size: 14px;
+  }
+}

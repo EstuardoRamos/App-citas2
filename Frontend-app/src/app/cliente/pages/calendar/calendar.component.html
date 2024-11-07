@@ -1,0 +1,20 @@
+<div class="calendar-container">
+    <div class="header">
+      <h1>Appointments Scheduler</h1>
+    </div>
+  
+    <div>
+      <!-- Angular Calendar Week View -->
+      <mwl-calendar-week-view
+        [viewDate]="viewDate"
+        [events]="events"
+        [refresh]="refresh"
+        (eventClicked)="handleEvent('Clicked', $event.event)"
+        [hourSegments]="2"
+        [dayStartHour]="8"
+        [dayEndHour]="18"
+        [locale]="'en'">
+      </mwl-calendar-week-view>
+    </div>
+  </div>
+  

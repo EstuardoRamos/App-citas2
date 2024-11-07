@@ -1,0 +1,57 @@
+<div class="gestion-roles-container">
+  <h2>Gestión de Roles</h2>
+
+  <div class="tabla-formulario-contenedor">
+    <!-- Tabla de Roles Existentes -->
+    <div class="tabla-container">
+      <table class="roles-table">
+        <thead>
+          <tr>
+            <th>Nombre del Rol</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let role of roles">
+            <td>{{ role.nombre }}</td>
+            <td>
+              <button (click)="editarRol(role)">Editar</button>
+              <button (click)="eliminarRol(role)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Formulario de Creación/Edición de Roles -->
+    <form (ngSubmit)="guardarRol()" class="role-form" #form="ngForm">
+      <div class="form-group">
+        <label for="nombre">Nombre del Rol</label>
+        <input 
+          id="nombre" 
+          [(ngModel)]="rol.nombre" 
+          name="nombre" 
+          required 
+          #nombre="ngModel"
+        />
+        <div *ngIf="nombre.invalid && nombre.touched" class="error">
+          El nombre es obligatorio.
+        </div>
+      </div>
+
+      <div class="permisos-section">
+        <label>Permisos</label>
+        <div *ngFor="let permiso of permisos">
+          <input 
+            type="checkbox" 
+            [(ngModel)]="permiso.seleccionado" 
+            [name]="'permiso_' + permiso.id" 
+          /> 
+          {{ permiso.nombre }}
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="form.invalid">Guardar Rol</button>
+    </form>
+  </div>
+</div>

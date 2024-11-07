@@ -1,0 +1,62 @@
+<div class="citas-container">
+    <h2>Citas clientes</h2>
+  
+    <!-- Filtro de fecha -->
+    <mat-form-field appearance="fill">
+      <mat-label>Seleccione una fecha</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="fechaSeleccionada" (dateChange)="listarCitasFecha()" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  
+    <!-- Tabla de citas -->
+    <table mat-table [dataSource]="citas" class="mat-elevation-z8">
+      <!-- Fecha -->
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef> Fecha </th>
+        <td mat-cell *matCellDef="let cita"> {{ cita.fecha }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="cliente">
+        <th mat-header-cell *matHeaderCellDef> Cliente </th>
+        <td mat-cell *matCellDef="let cita"> {{ cita.usuario.nombre }} </td>
+      </ng-container>
+  
+      <!-- Hora de Inicio -->
+      <ng-container matColumnDef="horaInicio">
+        <th mat-header-cell *matHeaderCellDef> Hora de Inicio </th>
+        <td mat-cell *matCellDef="let cita"> {{ cita.horaInicio }} </td>
+      </ng-container>
+  
+      <!-- Servicio -->
+      <ng-container matColumnDef="servicio">
+        <th mat-header-cell *matHeaderCellDef> Servicio </th>
+        <td mat-cell *matCellDef="let cita"> {{ cita.servicio.nombre }} </td>
+      </ng-container>
+  
+      <!-- Servidor -->
+      <ng-container matColumnDef="servidor">
+        <th mat-header-cell *matHeaderCellDef> Servidor </th>
+        <td mat-cell *matCellDef="let cita"> {{ cita.idServidor.nombre }} </td>
+      </ng-container>
+  
+      <!-- Estado -->
+      <ng-container matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let cita"> {{ cita.estadoCita.nombre }} </td>
+      </ng-container>
+  
+      <!-- Acciones -->
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let cita">
+          <button mat-button color="accent" (click)="generarComprobante(cita)">Generar</button>
+          <button mat-button color="primary" (click)="openDialog(cita)">Actualizar Estado</button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="['fecha','cliente', 'horaInicio', 'servicio', 'servidor', 'estado', 'acciones']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['fecha','cliente', 'horaInicio', 'servicio', 'servidor', 'estado', 'acciones'];"></tr>
+    </table>
+  </div>
+  

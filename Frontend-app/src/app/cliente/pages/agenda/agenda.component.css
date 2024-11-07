@@ -1,0 +1,112 @@
+/* Contenedor Principal */
+.container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  
+  border-radius: 0px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: #e0e0e0;
+}
+
+/* Título */
+h3 {
+  font-size: 1.4em;
+  color: #00adb5;
+  margin-top: 0;
+  font-weight: bold;
+}
+
+/* Estilo de MatCard */
+mat-card {
+  
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: none;
+}
+
+/* Campos del formulario */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+mat-form-field .mat-form-field-label {
+  color: #aaaaaa;
+}
+
+.mat-select, .mat-input-element {
+  color: #ffffff;
+}
+
+.mat-select-placeholder, .mat-placeholder {
+  color: #aaaaaa !important;
+}
+
+.mat-select-trigger {
+  background-color: #424242; /* Fondo del selector */
+  border-radius: 5px;
+}
+
+.mat-select-panel {
+  background-color: #2b2b2b;
+}
+
+.mat-datepicker-toggle {
+  color: #aaaaaa;
+}
+
+/* Botones de horarios disponibles */
+.horarios-container {
+  margin-top: 20px;
+}
+
+.horario button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px 0;
+  background-color: #00adb5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.horario button:hover {
+  background-color: #008a92;
+}
+
+/* Botones de horarios ocupados */
+.horario.ocupado button {
+  background-color: #555555;
+  cursor: not-allowed;
+  color: #999999;
+}
+
+.horario.ocupado button:hover {
+  background-color: #555555;
+}
+
+/* Estilo de los íconos */
+mat-icon {
+  color: #00adb5;
+}
+
+/* Añadir borde y efecto de hover en los selectores */
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: #424242;
+  border-radius: 8px;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-outline {
+  color: #555555;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-outline-thick {
+  border-color: #555555;
+}

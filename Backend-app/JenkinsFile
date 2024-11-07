@@ -1,0 +1,84 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Clonar el repositorio
+                checkout scm
+            }
+        }
+        /*
+        stage('Build') {
+            steps {
+                dir('Backend-app') {
+                    echo 'Compilando el proyecto...'
+                    bat 'mvnw clean package' // Empaqueta el proyecto en un archivo .jar
+                    echo 'terminando de compilar el proyecto'
+                }
+            }
+        }*/
+
+        stage('Test') {
+            steps {
+                dir('Backend-app') {
+                    echo 'Ejecutando pruebas...'
+                    bat 'mvnw clean install -U'
+                    bat 'mvnw test' // Ejecuta las pruebas
+                }
+            }
+            post {
+                always {
+                    dir('Backend-app') {
+                        // Generar informe de cobertura de pruebas
+                        junit '**/target/surefire-reports/*.xml' // Ruta de los resultados de prueba
+                        cobertura coberturaReportFile: '**/target/site/jacoco/jacoco.xml' // Ruta del reporte de cobertura
+                    }
+                }
+            }
+        }
+
+        stage('Check Coverage') {
+            steps {
+                dir('Backend-app') {
+                    script {
+                        // Verificar cobertura mínima
+                        def cobertura = coberturaCoverageFindings('**/build/reports/cobertura/coverage.xml')
+                        def coveragePercentage = cobertura.totalPercentage('LINE')
+                        if (coveragePercentage < 80) {
+                            error "El porcentaje de cobertura (${coveragePercentage}%) es inferior al 80%. No se hará el despliegue."
+                        } else {
+                            echo "El porcentaje de cobertura (${coveragePercentage}%) cumple con el mínimo requerido."
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Deploy') {
+            when {
+                expression { cobertura.totalPercentage('LINE') >= 80 }
+            }
+            steps {
+                dir('Backend-app') {
+                    // Desplegar el proyecto
+                    echo 'Desplegando a producción...'
+                    echo 'Desplegando aplicación en el servidor Jenkins...'
+                    // Detener cualquier instancia anterior de la aplicación
+                    //sh 'pkill -f "java -jar target/myapp.jar" || true'
+                    // Desplegar la aplicación en segundo plano
+                    //sh 'nohup java -jar target/myapp.jar &'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completado con éxito.'
+        }
+        failure {
+            echo 'Pipeline falló.'
+        }
+    }
+}
